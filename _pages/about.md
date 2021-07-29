@@ -3,9 +3,9 @@ layout: page
 title: About Me
 permalink: /about/
 ---
+Welcome! 
 
-This website is powered by **[fastpages](https://github.com/fastai/fastpages)** [^1].
+This website displays my project portfolio **[Connie Dang](https://www.linkedin.com/in/connie-m-dang/)** [^1].
 
 
-
-[^1]:a blogging platform that natively supports Jupyter notebooks in addition to other formats.
+[^1]:check out my Linkedin page.
