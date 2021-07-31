@@ -10,13 +10,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
 <meta property="og:description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
-<link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html" />
-<meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html" />
+<link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
+<meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
 <meta property="og:site_name" content="Connie M Dang Project Portfolio" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-11-22T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Profit Risks for New Oil Wells","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html"},"description":"An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.","@context":"https://schema.org"}</script>
+{"description":"An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.","url":"https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Profit Risks for New Oil Wells","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ds-projects/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://cmdang-mochi.github.io/ds-projects/feed.xml" title="Connie M Dang | Project Portfolio" /><link rel="shortcut icon" type="image/x-icon" href="/ds-projects/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -98,6 +98,25 @@ window.onload = wrap_img;
 </span></p>
 
     
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#jupyter">jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#pandas. numpy">pandas. numpy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#scikit-learn">scikit-learn</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#tabulate">tabulate</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#scipy">scipy</a>
+        
+      
+      </p>
+    
 
     
       
@@ -124,7 +143,45 @@ window.onload = wrap_img;
       </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <!--
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Project-Description">Project Description </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Data-description">Data description </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Import-Libraries">Import Libraries </a></li>
+<li class="toc-entry toc-h1"><a href="#Exploratory-data-analysis">Exploratory data analysis </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Load-data">Load data </a></li>
+<li class="toc-entry toc-h2"><a href="#Preprocessing-data">Preprocessing data </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Split-Data">Split Data </a></li>
+<li class="toc-entry toc-h1"><a href="#Model-building">Model building </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#geo_0-region">geo_0 region </a></li>
+<li class="toc-entry toc-h2"><a href="#geo_1-region">geo_1 region </a></li>
+<li class="toc-entry toc-h2"><a href="#geo_2-region">geo_2 region </a></li>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Profit-calculation">Profit calculation </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions">Profit from a set of selected oil wells and model predictions </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Calculate-risks-and-profit-for-each-region">Calculate risks and profit for each region </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Overall-Conclusion">Overall Conclusion </a></li>
+</ul><!--
 #################################################
 ### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
 #################################################
@@ -133,9 +190,13 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Project-Description">Project Description<a class="anchor-link" href="#Project-Description"> </a></h1><hr />
+<h1 id="Project-Description">
+<a class="anchor" href="#Project-Description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project Description<a class="anchor-link" href="#Project-Description"> </a>
+</h1>
+<hr>
 <p>Analyze potential profit and risks for an oil company.</p>
 <p>Create a model that will analyze different proposed locations for a new oil well that will maximize profits while minimizing risk.</p>
 <p>Goal is to find the best place for a new oil well using provided data from three different regions.</p>
@@ -151,14 +212,21 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-description">Data description<a class="anchor-link" href="#Data-description"> </a></h2><hr />
+<h2 id="Data-description">
+<a class="anchor" href="#Data-description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data description<a class="anchor-link" href="#Data-description"> </a>
+</h2>
+<hr>
 <p>Geological exploration data for the three regions are stored in files:</p>
 <ul>
-<li><em>id</em> — unique oil well identifier</li>
-<li><em>f0, f1, f2</em> — three features of points (their specific meaning is unimportant, but the features themselves are significant)</li>
-<li><em>product</em> — volume of reserves in the oil well (thousand barrels).</li>
+<li>
+<em>id</em> — unique oil well identifier</li>
+<li>
+<em>f0, f1, f2</em> — three features of points (their specific meaning is unimportant, but the features themselves are significant)</li>
+<li>
+<em>product</em> — volume of reserves in the oil well (thousand barrels).</li>
 </ul>
 <p><strong>Conditions:</strong></p>
 <ul>
@@ -173,9 +241,12 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Import-Libraries">Import Libraries<a class="anchor-link" href="#Import-Libraries"> </a></h1>
+<h1 id="Import-Libraries">
+<a class="anchor" href="#Import-Libraries" aria-hidden="true"><span class="octicon octicon-link"></span></a>Import Libraries<a class="anchor-link" href="#Import-Libraries"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -205,15 +276,21 @@ window.onload = wrap_img;
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Exploratory-data-analysis">Exploratory data analysis<a class="anchor-link" href="#Exploratory-data-analysis"> </a></h1>
+<h1 id="Exploratory-data-analysis">
+<a class="anchor" href="#Exploratory-data-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exploratory data analysis<a class="anchor-link" href="#Exploratory-data-analysis"> </a>
+</h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-data">Load data<a class="anchor-link" href="#Load-data"> </a></h2>
+<h2 id="Load-data">
+<a class="anchor" href="#Load-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load data<a class="anchor-link" href="#Load-data"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -224,9 +301,9 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/datasets/geo_data_0.csv&#39;</span><span class="p">)</span>
-<span class="n">geo_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/datasets/geo_data_1.csv&#39;</span><span class="p">)</span>
-<span class="n">geo_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/content/datasets/geo_data_2.csv&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_0</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'/content/datasets/geo_data_0.csv'</span><span class="p">)</span>
+<span class="n">geo_1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'/content/datasets/geo_data_1.csv'</span><span class="p">)</span>
+<span class="n">geo_2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'/content/datasets/geo_data_2.csv'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -244,38 +321,38 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_information</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot; Prints general info about the dataframe to get an idea of what it looks like&quot;&quot;&quot;</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Head: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="sd">""" Prints general info about the dataframe to get an idea of what it looks like"""</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Head: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># Prints a break to seperate print data</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span> <span class="c1"># Prints a break to seperate print data</span>
   
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Info: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Info: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Describe: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Describe: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Columns with nulls: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Columns with nulls: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">get_null_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Shape: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Shape: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Duplicated: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of duplicated rows: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Duplicated: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of duplicated rows: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
 
 <span class="k">def</span> <span class="nf">get_null_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Gets percentage of null values per column per dataframe&quot;&quot;&quot;</span>
-  <span class="n">df_nulls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;missing_values&#39;</span><span class="p">])</span>
-  <span class="n">df_nulls</span><span class="p">[</span><span class="s1">&#39;percent_of_nulls&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df_nulls</span><span class="p">[</span><span class="s1">&#39;missing_values&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num</span><span class="p">)</span> <span class="o">*</span><span class="mi">100</span>
+  <span class="sd">"""Gets percentage of null values per column per dataframe"""</span>
+  <span class="n">df_nulls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'missing_values'</span><span class="p">])</span>
+  <span class="n">df_nulls</span><span class="p">[</span><span class="s1">'percent_of_nulls'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df_nulls</span><span class="p">[</span><span class="s1">'missing_values'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num</span><span class="p">)</span> <span class="o">*</span><span class="mi">100</span>
   <span class="k">return</span> <span class="n">df_nulls</span>
 
 <span class="k">def</span> <span class="nf">get_null</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;Gets percentage of null values in dataframe&quot;&quot;&quot;</span>
+  <span class="sd">"""Gets percentage of null values in dataframe"""</span>
   <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
   <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -286,12 +363,12 @@ window.onload = wrap_img;
       <span class="k">continue</span>
     <span class="k">else</span><span class="p">:</span>
       <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Columns </span><span class="si">{}</span><span class="s1"> has {:.</span><span class="si">{}</span><span class="s1">%} percent of Nulls, and </span><span class="si">{}</span><span class="s1"> number of nulls&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">num_of_nulls</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Columns </span><span class="si">{}</span><span class="s1"> has {:.</span><span class="si">{}</span><span class="s1">%} percent of Nulls, and </span><span class="si">{}</span><span class="s1"> number of nulls'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">num_of_nulls</span><span class="p">))</span>
 
     <span class="k">if</span> <span class="n">count</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of columns with NA: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of columns with NA: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">No NA columns found&#39;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">No NA columns found'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -308,13 +385,17 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_information</span><span class="p">(</span><span class="n">geo_0</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Opening dataset for geo_0</span>
+<span class="n">get_information</span><span class="p">(</span><span class="n">geo_0</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
 <div class="output_wrapper">
 <div class="output">
 
@@ -411,7 +492,7 @@ window.onload = wrap_img;
 
 Info: 
 
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 100000 entries, 0 to 99999
 Data columns (total 5 columns):
  #   Column   Non-Null Count   Dtype  
@@ -646,10 +727,12 @@ Number of duplicated rows: 0
 </div>
 </div>
 
+    </details>
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Dataset for <code>geo_0</code> show to have 100000 entries with no null/missing values and datatypes seem to be correct.</p>
 
@@ -663,13 +746,17 @@ Number of duplicated rows: 0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_information</span><span class="p">(</span><span class="n">geo_1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Opening dataset for geo_1</span>
+<span class="n">get_information</span><span class="p">(</span><span class="n">geo_1</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
 <div class="output_wrapper">
 <div class="output">
 
@@ -766,7 +853,7 @@ Number of duplicated rows: 0
 
 Info: 
 
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 100000 entries, 0 to 99999
 Data columns (total 5 columns):
  #   Column   Non-Null Count   Dtype  
@@ -1001,10 +1088,12 @@ Number of duplicated rows: 0
 </div>
 </div>
 
+    </details>
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Dataset for <code>geo_1</code> show to have 100000 entries with no null/missing values and datatypes seem to be correct.</p>
 
@@ -1018,13 +1107,17 @@ Number of duplicated rows: 0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_information</span><span class="p">(</span><span class="n">geo_2</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Opening dataset for geo_2</span>
+<span class="n">get_information</span><span class="p">(</span><span class="n">geo_2</span><span class="p">)</span>
 </pre></div>
 
     </div>
 </div>
 </div>
-
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Output" data-close="Show Output"></summary>
+        <p>
+</p>
 <div class="output_wrapper">
 <div class="output">
 
@@ -1121,7 +1214,7 @@ Number of duplicated rows: 0
 
 Info: 
 
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+&lt;class 'pandas.core.frame.DataFrame'&gt;
 RangeIndex: 100000 entries, 0 to 99999
 Data columns (total 5 columns):
  #   Column   Non-Null Count   Dtype  
@@ -1356,10 +1449,12 @@ Number of duplicated rows: 0
 </div>
 </div>
 
+    </details>
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Dataset for <code>geo_2</code> show to have 100000 entries with no null/missing values and datatypes seem to be correct.</p>
 <p>From all the datasets, we might be able to drop the <strong>id</strong> column as it does not provide the models much information.</p>
@@ -1367,9 +1462,12 @@ Number of duplicated rows: 0
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Preprocessing-data">Preprocessing data<a class="anchor-link" href="#Preprocessing-data"> </a></h2>
+<h2 id="Preprocessing-data">
+<a class="anchor" href="#Preprocessing-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Preprocessing data<a class="anchor-link" href="#Preprocessing-data"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -1380,13 +1478,13 @@ Number of duplicated rows: 0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_0_data</span> <span class="o">=</span> <span class="n">geo_0</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo_0_data</span> <span class="o">=</span> <span class="n">geo_0</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'id'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">geo_0_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
-<span class="n">geo_1_data</span> <span class="o">=</span> <span class="n">geo_1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">geo_1_data</span> <span class="o">=</span> <span class="n">geo_1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'id'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">geo_1_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
-<span class="n">geo_2_data</span> <span class="o">=</span> <span class="n">geo_2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">geo_2_data</span> <span class="o">=</span> <span class="n">geo_2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'id'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">geo_2_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 
@@ -1616,16 +1714,20 @@ Number of duplicated rows: 0
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The datasets <code>geo_0</code>, <code>geo_1</code>, <code>geo_2</code> all have 100,000 entries with no missing values and have datatypes that seem to be correct. We were able to drop the <strong>id</strong> column as this would not provide much information for our model.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Split-Data">Split Data<a class="anchor-link" href="#Split-Data"> </a></h1>
+<h1 id="Split-Data">
+<a class="anchor" href="#Split-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Split Data<a class="anchor-link" href="#Split-Data"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -1657,8 +1759,8 @@ Number of duplicated rows: 0
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo0_target</span> <span class="o">=</span> <span class="n">geo_0_data</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span>
-<span class="n">geo0_features</span> <span class="o">=</span> <span class="n">geo_0_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;product&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo0_target</span> <span class="o">=</span> <span class="n">geo_0_data</span><span class="p">[</span><span class="s1">'product'</span><span class="p">]</span>
+<span class="n">geo0_features</span> <span class="o">=</span> <span class="n">geo_0_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'product'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">geo0_x_train</span><span class="p">,</span> <span class="n">geo0_x_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo0_features</span><span class="p">)</span>
 <span class="n">geo0_y_train</span><span class="p">,</span> <span class="n">geo0_y_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo0_target</span><span class="p">)</span>
@@ -1666,9 +1768,9 @@ Number of duplicated rows: 0
 <span class="k">assert</span> <span class="n">geo0_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo0_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">geo0_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo0_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;geo_0 datasets: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train:&#39;</span><span class="p">,</span> <span class="n">geo0_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Train:&#39;</span><span class="p">,</span> <span class="n">geo0_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation:&#39;</span><span class="p">,</span> <span class="n">geo0_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Validation:&#39;</span><span class="p">,</span> <span class="n">geo0_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'geo_0 datasets: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Train:'</span><span class="p">,</span> <span class="n">geo0_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Train:'</span><span class="p">,</span> <span class="n">geo0_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Validation:'</span><span class="p">,</span> <span class="n">geo0_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Validation:'</span><span class="p">,</span> <span class="n">geo0_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1702,8 +1804,8 @@ Validation: (25000, 3)  Target Validation: (25000,)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo1_target</span> <span class="o">=</span> <span class="n">geo_1_data</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span>
-<span class="n">geo1_features</span> <span class="o">=</span> <span class="n">geo_1_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;product&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo1_target</span> <span class="o">=</span> <span class="n">geo_1_data</span><span class="p">[</span><span class="s1">'product'</span><span class="p">]</span>
+<span class="n">geo1_features</span> <span class="o">=</span> <span class="n">geo_1_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'product'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">geo1_x_train</span><span class="p">,</span> <span class="n">geo1_x_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo1_features</span><span class="p">)</span>
 <span class="n">geo1_y_train</span><span class="p">,</span> <span class="n">geo1_y_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo1_target</span><span class="p">)</span>
@@ -1711,9 +1813,9 @@ Validation: (25000, 3)  Target Validation: (25000,)
 <span class="k">assert</span> <span class="n">geo1_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo1_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">geo1_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo1_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;geo_1 datasets: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train:&#39;</span><span class="p">,</span> <span class="n">geo1_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Train:&#39;</span><span class="p">,</span> <span class="n">geo1_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation:&#39;</span><span class="p">,</span> <span class="n">geo1_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Validation:&#39;</span><span class="p">,</span> <span class="n">geo1_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'geo_1 datasets: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Train:'</span><span class="p">,</span> <span class="n">geo1_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Train:'</span><span class="p">,</span> <span class="n">geo1_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Validation:'</span><span class="p">,</span> <span class="n">geo1_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Validation:'</span><span class="p">,</span> <span class="n">geo1_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1747,8 +1849,8 @@ Validation: (25000, 3)  Target Validation: (25000,)
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo2_target</span> <span class="o">=</span> <span class="n">geo_2_data</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span>
-<span class="n">geo2_features</span> <span class="o">=</span> <span class="n">geo_2_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;product&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo2_target</span> <span class="o">=</span> <span class="n">geo_2_data</span><span class="p">[</span><span class="s1">'product'</span><span class="p">]</span>
+<span class="n">geo2_features</span> <span class="o">=</span> <span class="n">geo_2_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'product'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">geo2_x_train</span><span class="p">,</span> <span class="n">geo2_x_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo2_features</span><span class="p">)</span>
 <span class="n">geo2_y_train</span><span class="p">,</span> <span class="n">geo2_y_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">geo2_target</span><span class="p">)</span>
@@ -1756,9 +1858,9 @@ Validation: (25000, 3)  Target Validation: (25000,)
 <span class="k">assert</span> <span class="n">geo2_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo2_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="k">assert</span> <span class="n">geo2_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">geo2_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;geo_2 datasets: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train:&#39;</span><span class="p">,</span> <span class="n">geo2_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Train:&#39;</span><span class="p">,</span> <span class="n">geo2_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Validation:&#39;</span><span class="p">,</span> <span class="n">geo2_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">&#39; Target Validation:&#39;</span><span class="p">,</span> <span class="n">geo2_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'geo_2 datasets: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Train:'</span><span class="p">,</span> <span class="n">geo2_x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Train:'</span><span class="p">,</span> <span class="n">geo2_y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Validation:'</span><span class="p">,</span> <span class="n">geo2_x_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Validation:'</span><span class="p">,</span> <span class="n">geo2_y_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1785,7 +1887,8 @@ Validation: (25000, 3)  Target Validation: (25000,)
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="alert alert-block alert-danger">
 <b>Needs fixing:</b> We don't need valid part in the task because we don't tune parameters. Create only train(75%) and test(25%).
@@ -1793,23 +1896,28 @@ Validation: (25000, 3)  Target Validation: (25000,)
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong><em>Updated to only have validation(25%) and train(75%) datasets, since we do not need the test dataset for tunning parameters on our models</em></strong></p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The dataset for the three different regions were successfully split into train and validation datasets with a 75:25 ratio. There is no testing sub-dataset as the models will not be hyper-tuned.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Model-building">Model building<a class="anchor-link" href="#Model-building"> </a></h1>
+<h1 id="Model-building">
+<a class="anchor" href="#Model-building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model building<a class="anchor-link" href="#Model-building"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -1826,10 +1934,10 @@ Validation: (25000, 3)  Target Validation: (25000,)
     
     <span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_valid</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;---Model validation/prediction datasets scores---&#39;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy:&#39;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;R2:&#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;RMSE:&#39;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'---Model validation/prediction datasets scores---'</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Accuracy:'</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_valid</span><span class="p">,</span> <span class="n">y_valid</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'R2:'</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">predictions</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'RMSE:'</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_valid</span><span class="p">,</span> <span class="n">predictions</span><span class="p">,</span> <span class="n">squared</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -1839,9 +1947,12 @@ Validation: (25000, 3)  Target Validation: (25000,)
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="geo_0-region">geo_0 region<a class="anchor-link" href="#geo_0-region"> </a></h2>
+<h2 id="geo_0-region">
+<a class="anchor" href="#geo_0-region" aria-hidden="true"><span class="octicon octicon-link"></span></a>geo_0 region<a class="anchor-link" href="#geo_0-region"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -1856,9 +1967,9 @@ Validation: (25000, 3)  Target Validation: (25000,)
 <span class="n">geo0_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">geo0_x_train</span><span class="p">,</span> <span class="n">geo0_y_train</span><span class="p">)</span>
 <span class="n">geo0_predictions</span> <span class="o">=</span> <span class="n">geo0_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">geo0_x_valid</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sanity check for geo_0 model:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Sanity check for geo_0 model:'</span><span class="p">)</span>
 <span class="n">LinReg_sanity_check</span><span class="p">(</span><span class="n">geo0_x_train</span><span class="p">,</span> <span class="n">geo0_x_valid</span><span class="p">,</span> <span class="n">geo0_y_train</span><span class="p">,</span> <span class="n">geo0_y_valid</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_0 (thousand barrels):&#39;</span><span class="p">,</span> <span class="n">geo0_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_0 (thousand barrels):'</span><span class="p">,</span> <span class="n">geo0_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -1888,16 +1999,20 @@ Average volume of predicted reserves in geo_0 (thousand barrels): 92.59256778438
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For the data in geo_0, the accuracy, R2 and RMSE scores are pretty terrble. The accuracy and R2 score are very low and the RMSE score is very big.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="geo_1-region">geo_1 region<a class="anchor-link" href="#geo_1-region"> </a></h2>
+<h2 id="geo_1-region">
+<a class="anchor" href="#geo_1-region" aria-hidden="true"><span class="octicon octicon-link"></span></a>geo_1 region<a class="anchor-link" href="#geo_1-region"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -1912,9 +2027,9 @@ Average volume of predicted reserves in geo_0 (thousand barrels): 92.59256778438
 <span class="n">geo1_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">geo1_x_train</span><span class="p">,</span> <span class="n">geo1_y_train</span><span class="p">)</span>
 <span class="n">geo1_predictions</span> <span class="o">=</span> <span class="n">geo1_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">geo1_x_valid</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sanity check for geo_1 model:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Sanity check for geo_1 model:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">LinReg_sanity_check</span><span class="p">(</span><span class="n">geo1_x_train</span><span class="p">,</span> <span class="n">geo1_x_valid</span><span class="p">,</span> <span class="n">geo1_y_train</span><span class="p">,</span> <span class="n">geo1_y_valid</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_1 (thousand barrels):&#39;</span><span class="p">,</span> <span class="n">geo1_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_1 (thousand barrels):'</span><span class="p">,</span> <span class="n">geo1_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -1945,16 +2060,20 @@ Average volume of predicted reserves in geo_1 (thousand barrels): 68.72854689544
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The scores for data in geo_1 are actually pretty good with accuracy and R2 score pretty close to 1 and RMSE score being very low.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="geo_2-region">geo_2 region<a class="anchor-link" href="#geo_2-region"> </a></h2>
+<h2 id="geo_2-region">
+<a class="anchor" href="#geo_2-region" aria-hidden="true"><span class="octicon octicon-link"></span></a>geo_2 region<a class="anchor-link" href="#geo_2-region"> </a>
+</h2>
 </div>
 </div>
 </div>
@@ -1969,9 +2088,9 @@ Average volume of predicted reserves in geo_1 (thousand barrels): 68.72854689544
 <span class="n">geo2_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">geo2_x_train</span><span class="p">,</span> <span class="n">geo2_y_train</span><span class="p">)</span>
 <span class="n">geo2_predictions</span> <span class="o">=</span> <span class="n">geo2_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">geo2_x_valid</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sanity check for geo_2 model:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Sanity check for geo_2 model:</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
 <span class="n">LinReg_sanity_check</span><span class="p">(</span><span class="n">geo2_x_train</span><span class="p">,</span> <span class="n">geo2_x_valid</span><span class="p">,</span> <span class="n">geo2_y_train</span><span class="p">,</span> <span class="n">geo2_y_valid</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_2 (thousand barrels):&#39;</span><span class="p">,</span> <span class="n">geo2_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Average volume of predicted reserves in geo_2 (thousand barrels):'</span><span class="p">,</span> <span class="n">geo2_predictions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -2002,19 +2121,25 @@ Average volume of predicted reserves in geo_2 (thousand barrels): 94.96504596800
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Similar to the model for geo_0, the scores here for geo_2 model are not that great with a very low accuracy and R2 score and high RMSE score.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h2><p>The table below shows each models' results using the valdiation datasets to make predictions:</p>
-<hr />
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>The table below shows each models' results using the valdiation datasets to make predictions:</p>
+<hr>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left"></th>
 <th style="text-align:left">geo_0</th>
 <th style="text-align:left">geo_1</th>
@@ -2048,7 +2173,7 @@ Average volume of predicted reserves in geo_2 (thousand barrels): 94.96504596800
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p>R2 score shows the relative measure of fit, while RMSE is an absolute measure of fit. Lower values of RMSE indicate a better fit.</p>
 <p>The model for geo_1 has the best scores for accuracy, R2, and RMSE. With accuracy and R2 being close to 1 and with a very small RMSE it seems like the model can predict pretty well using the dataset provided for geo_1. However, predicted average volume of reserves in ge0_1 is the lowest of the 3 regions being at 68.968 thousands barrels.</p>
 <p>The models for geo_0 and geo_2 performed pretty similar for the datasets given for these two regions. The accuracy and R2 score are very small ranging around 0.20 - 0.30 and have RMSE score around 40. In comparison, though these two have similar scores in accuracy, R2 and RMSE, the model for geo_0 did slightly better with a slightly higher accuracy and R2 score and a bit lower RMSE score compared to the model for geo_2.</p>
@@ -2058,9 +2183,12 @@ Average volume of predicted reserves in geo_2 (thousand barrels): 94.96504596800
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Profit-calculation">Profit calculation<a class="anchor-link" href="#Profit-calculation"> </a></h1>
+<h1 id="Profit-calculation">
+<a class="anchor" href="#Profit-calculation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Profit calculation<a class="anchor-link" href="#Profit-calculation"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -2078,15 +2206,15 @@ Average volume of predicted reserves in geo_2 (thousand barrels): 94.96504596800
 <span class="c1">#Calculation for the volume of reserves sufficient for developing a new well without losses</span>
 <span class="n">volume_no_loss</span> <span class="o">=</span> <span class="p">(</span><span class="n">BUDGET</span><span class="o">/</span><span class="n">POINT_PER_BUDGET</span><span class="p">)</span> <span class="o">/</span> <span class="n">PRODUCT_PRICE</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Volume of reserves sufficient for developing a new well without losses:&#39;</span><span class="p">,</span> <span class="n">volume_no_loss</span><span class="p">,</span> <span class="s1">&#39;(thousand barrels)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Volume of reserves sufficient for developing a new well without losses:'</span><span class="p">,</span> <span class="n">volume_no_loss</span><span class="p">,</span> <span class="s1">'(thousand barrels)'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">average_volume</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-  <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;product&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="s1">'product'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Average volume of reserves in each region:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* geo_0: &#39;</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_0</span><span class="p">),</span> <span class="s1">&#39;(thousand barrels)&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* geo_1: &#39;</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_1</span><span class="p">),</span> <span class="s1">&#39;(thousand barrels)&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* geo_2: &#39;</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_2</span><span class="p">),</span> <span class="s1">&#39;(thousand barrels)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Average volume of reserves in each region:'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'* geo_0: '</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_0</span><span class="p">),</span> <span class="s1">'(thousand barrels)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'* geo_1: '</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_1</span><span class="p">),</span> <span class="s1">'(thousand barrels)'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'* geo_2: '</span><span class="p">,</span> <span class="n">average_volume</span><span class="p">(</span><span class="n">geo_2</span><span class="p">),</span> <span class="s1">'(thousand barrels)'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -2115,12 +2243,17 @@ Average volume of reserves in each region:
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h2><p>The minimum volume of reserves need to develop a new well without losses is 111.11 (thousand barrels).</p>
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>The minimum volume of reserves need to develop a new well without losses is 111.11 (thousand barrels).</p>
 <p>Tables showing average volume in each region:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left"></th>
 <th style="text-align:left">geo_0</th>
 <th style="text-align:left">geo_1</th>
@@ -2147,9 +2280,12 @@ Average volume of reserves in each region:
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Profit-from-a-set-of-selected-oil-wells-and-model-predictions">Profit from a set of selected oil wells and model predictions<a class="anchor-link" href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions"> </a></h1>
+<h1 id="Profit-from-a-set-of-selected-oil-wells-and-model-predictions">
+<a class="anchor" href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Profit from a set of selected oil wells and model predictions<a class="anchor-link" href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -2190,7 +2326,7 @@ Average volume of reserves in each region:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rev_geo0</span> <span class="o">=</span> <span class="n">revenue</span><span class="p">(</span><span class="n">geo0_y_valid</span><span class="p">,</span> <span class="n">geo0_predictions</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Predicted profit for region geo_0 with top best 200 wells:&#39;</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Predicted profit for region geo_0 with top best 200 wells:'</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo0</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -2222,7 +2358,7 @@ Average volume of reserves in each region:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rev_geo1</span> <span class="o">=</span> <span class="n">revenue</span><span class="p">(</span><span class="n">geo1_y_valid</span><span class="p">,</span> <span class="n">geo1_predictions</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Predicted profit for region geo_1 with top best 200 wells:&#39;</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Predicted profit for region geo_1 with top best 200 wells:'</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo1</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -2254,7 +2390,7 @@ Average volume of reserves in each region:
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">rev_geo2</span> <span class="o">=</span> <span class="n">revenue</span><span class="p">(</span><span class="n">geo2_y_valid</span><span class="p">,</span> <span class="n">geo2_predictions</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Predicted profit for region geo_2 with top best 200 wells:&#39;</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Predicted profit for region geo_2 with top best 200 wells:'</span><span class="p">,</span> <span class="n">profit</span><span class="p">(</span><span class="n">rev_geo2</span><span class="p">)</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -2278,16 +2414,23 @@ Average volume of reserves in each region:
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h2><p>From the calculations in this section, it's best to develop new wells in region geo_0. The calculation for predicted profit is highest in this region at 33,208,260.43 USD. geo_1 had the lowest predicted profit at 24,150,866.97 USD and geo_2 came out in the middle at 27,103,499.64 USD.</p>
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>From the calculations in this section, it's best to develop new wells in region geo_0. The calculation for predicted profit is highest in this region at 33,208,260.43 USD. geo_1 had the lowest predicted profit at 24,150,866.97 USD and geo_2 came out in the middle at 27,103,499.64 USD.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Calculate-risks-and-profit-for-each-region">Calculate risks and profit for each region<a class="anchor-link" href="#Calculate-risks-and-profit-for-each-region"> </a></h1>
+<h1 id="Calculate-risks-and-profit-for-each-region">
+<a class="anchor" href="#Calculate-risks-and-profit-for-each-region" aria-hidden="true"><span class="octicon octicon-link"></span></a>Calculate risks and profit for each region<a class="anchor-link" href="#Calculate-risks-and-profit-for-each-region"> </a>
+</h1>
 </div>
 </div>
 </div>
@@ -2324,21 +2467,21 @@ Average volume of reserves in each region:
   <span class="n">confidence_interval</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span>
       <span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">profit_values</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">profit_values</span><span class="o">.</span><span class="n">sem</span><span class="p">())</span> 
   
-  <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;95</span><span class="si">% c</span><span class="s2">onfidence interval:&quot;</span><span class="p">,</span> <span class="n">confidence_interval</span><span class="p">)</span>
+  <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"95</span><span class="si">% c</span><span class="s2">onfidence interval:"</span><span class="p">,</span> <span class="n">confidence_interval</span><span class="p">)</span>
 
 
 <span class="c1">#Value at Risk (Risk of Losses) | Confidence Level calculation</span>
 <span class="k">def</span> <span class="nf">risk_of_loss</span><span class="p">(</span><span class="n">profit_values</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Value at risk (VaR) is a measure of the risk of loss for investments. </span>
 <span class="sd">  It estimates how much a set of investments might lose (with a given probability), </span>
 <span class="sd">  given normal market conditions, in a set time period such as a day</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">upper</span> <span class="o">=</span> <span class="n">profit_values</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.975</span><span class="p">)</span>
   <span class="n">lower</span> <span class="o">=</span> <span class="n">profit_values</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.025</span><span class="p">)</span>
 
-  <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">tabulate</span><span class="p">([[</span><span class="s1">&#39;2.5%&#39;</span><span class="p">,</span> <span class="n">lower</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;97.5%&#39;</span><span class="p">,</span> <span class="n">upper</span><span class="p">]],</span> <span class="n">floatfmt</span><span class="o">=</span><span class="s1">&#39;.2f&#39;</span><span class="p">,</span>
-                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Confidence Level&#39;</span><span class="p">,</span> <span class="s1">&#39;Value at Risk&#39;</span><span class="p">]))</span>
+  <span class="k">return</span> <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="n">tabulate</span><span class="p">([[</span><span class="s1">'2.5%'</span><span class="p">,</span> <span class="n">lower</span><span class="p">],</span> <span class="p">[</span><span class="s1">'97.5%'</span><span class="p">,</span> <span class="n">upper</span><span class="p">]],</span> <span class="n">floatfmt</span><span class="o">=</span><span class="s1">'.2f'</span><span class="p">,</span>
+                        <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s1">'Confidence Level'</span><span class="p">,</span> <span class="s1">'Value at Risk'</span><span class="p">]))</span>
 
 <span class="c1">#Sum of loss (negative profit) within our 1000 sample</span>
 <span class="k">def</span> <span class="nf">loss</span><span class="p">(</span><span class="n">profit_values</span><span class="p">):</span>
@@ -2375,9 +2518,9 @@ Average volume of reserves in each region:
 
 <span class="c1">#Loss probability calculation</span>
 <span class="k">def</span> <span class="nf">loss_prob</span><span class="p">(</span><span class="n">profit_values</span><span class="p">):</span>
-  <span class="sd">&quot;&quot;&quot;</span>
+  <span class="sd">"""</span>
 <span class="sd">  Loss probability is percentage of negative values in profit array</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
   <span class="n">total_num_loss</span> <span class="o">=</span> <span class="n">count_loss</span><span class="p">(</span><span class="n">profit_values</span><span class="p">)</span> <span class="c1">#Count of negative values in profit array</span>
   <span class="n">prob</span> <span class="o">=</span> <span class="n">total_num_loss</span> <span class="o">/</span> <span class="mi">1000</span> <span class="c1">#Sample size of 1000 for profit array</span>
 
@@ -2400,15 +2543,15 @@ Average volume of reserves in each region:
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo0_profit_values</span> <span class="o">=</span> <span class="n">profit_distribution</span><span class="p">(</span><span class="n">geo0_y_valid</span><span class="p">,</span> <span class="n">geo0_predictions</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average profit for region geo_0:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Average profit for region geo_0:'</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">confidence_interval</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">)</span>
 
 <span class="n">risk_of_loss</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">)</span>
 
 <span class="c1">#Loss probability</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Loss probability for geo_0:&#39;</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> 
-      <span class="s1">&#39;</span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Loss probability for geo_0:'</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">),</span> <span class="s1">'or'</span><span class="p">,</span> 
+      <span class="s1">'</span><span class="si">{:.2%}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo0_profit_values</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -2449,15 +2592,15 @@ Loss probability for geo_0: 0.069 or 6.90%
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo1_profit_values</span> <span class="o">=</span> <span class="n">profit_distribution</span><span class="p">(</span><span class="n">geo1_y_valid</span><span class="p">,</span> <span class="n">geo1_predictions</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average profit for region geo_1:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Average profit for region geo_1:'</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">confidence_interval</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">)</span>
 
 <span class="n">risk_of_loss</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">)</span>
 
 <span class="c1">#Loss probability</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Loss probability for geo_1:&#39;</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> 
-      <span class="s1">&#39;</span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Loss probability for geo_1:'</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">),</span> <span class="s1">'or'</span><span class="p">,</span> 
+      <span class="s1">'</span><span class="si">{:.2%}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo1_profit_values</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -2498,15 +2641,15 @@ Loss probability for geo_1: 0.015 or 1.50%
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">geo2_profit_values</span> <span class="o">=</span> <span class="n">profit_distribution</span><span class="p">(</span><span class="n">geo2_y_valid</span><span class="p">,</span> <span class="n">geo2_predictions</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average profit for region geo_2:&#39;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Average profit for region geo_2:'</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">2</span><span class="p">))</span>
 
 <span class="n">confidence_interval</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">)</span>
 
 <span class="n">risk_of_loss</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">)</span>
 
 <span class="c1">#Loss probability</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Loss probability for geo_2:&#39;</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">,</span> 
-      <span class="s1">&#39;</span><span class="si">{:.2%}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">Loss probability for geo_2:'</span><span class="p">,</span> <span class="n">loss_prob</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">),</span> <span class="s1">'or'</span><span class="p">,</span> 
+      <span class="s1">'</span><span class="si">{:.2%}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss_prob</span><span class="p">(</span><span class="n">geo2_profit_values</span><span class="p">)))</span>
 </pre></div>
 
     </div>
@@ -2538,11 +2681,16 @@ Loss probability for geo_2: 0.076 or 7.60%
 </div>
     
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h2><p>Based on the calculations in this section, the best region get develop new oil wells would be region geo_1. Out of the 1000 samples that was obtained in each region, geo_1 had the smallest probablity of loss at 1.50%. The calculated average profit for region geo_1 out of the 1000 sample slice came in at 4,560,451.06 USD which was the highest average profit out of the three regions. The table below summarizes the findings in this secion:</p>
+<h2 id="Conclusion">
+<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
+</h2>
+<p>Based on the calculations in this section, the best region get develop new oil wells would be region geo_1. Out of the 1000 samples that was obtained in each region, geo_1 had the smallest probablity of loss at 1.50%. The calculated average profit for region geo_1 out of the 1000 sample slice came in at 4,560,451.06 USD which was the highest average profit out of the three regions. The table below summarizes the findings in this secion:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left"></th>
 <th style="text-align:left">geo_0</th>
 <th style="text-align:left">geo_1</th>
@@ -2586,12 +2734,17 @@ Loss probability for geo_2: 0.076 or 7.60%
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Overall-Conclusion">Overall Conclusion<a class="anchor-link" href="#Overall-Conclusion"> </a></h1><p>In conlusion, with the calculations made for the provided datasets it seems as though region geo_1 is the best region develop new wells. The model for geo_1 had the best scores. The predicted profit for geo_1 came in second out of the three regions which isn't bad. And overall, geo_1 when sampled 1000 wells had the lowest loss probablity and had highest average profit.</p>
+<h1 id="Overall-Conclusion">
+<a class="anchor" href="#Overall-Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overall Conclusion<a class="anchor-link" href="#Overall-Conclusion"> </a>
+</h1>
+<p>In conlusion, with the calculations made for the provided datasets it seems as though region geo_1 is the best region develop new wells. The model for geo_1 had the best scores. The predicted profit for geo_1 came in second out of the three regions which isn't bad. And overall, geo_1 when sampled 1000 wells had the lowest loss probablity and had highest average profit.</p>
 <p>The table below summarize the sections we calculated:</p>
 <table>
-<thead><tr>
+<thead>
+<tr>
 <th style="text-align:left"></th>
 <th style="text-align:left">geo_0</th>
 <th style="text-align:left">geo_1</th>
@@ -2675,7 +2828,15 @@ Loss probability for geo_2: 0.076 or 7.60%
 
 
 
-  </div><a class="u-url" href="/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html" hidden></a>
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="cmdang-mochi/ds-projects"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
