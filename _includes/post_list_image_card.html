@@ -16,7 +16,7 @@
         
             <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       {% for category in  page.categories  %}
-                <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{page.categories}}</a>
+                <a class="category-tags-link" href="{{site.baseurl}}/categories/#{{category|slugize}}">{{post.categories}}</a>
         {% unless forloop.last %}&nbsp;{% endunless %}
       {% endfor %}
              </p>
