@@ -4,17 +4,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Project Description | Connie M Dang Project Portfolio</title>
+<title>Profit Risks for New Oil Wells | Connie M Dang Project Portfolio</title>
 <meta name="generator" content="Jekyll v4.1.1" />
-<meta property="og:title" content="Project Description" />
+<meta property="og:title" content="Profit Risks for New Oil Wells" />
 <meta property="og:locale" content="en_US" />
+<meta name="description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
+<meta property="og:description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
 <link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html" />
 <meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html" />
 <meta property="og:site_name" content="Connie M Dang Project Portfolio" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-11-22T00:00:00-06:00" />
 <script type="application/ld+json">
-{"url":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Project Description","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html"},"@context":"https://schema.org"}</script>
+{"url":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Profit Risks for New Oil Wells","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/2020/11/22/profit_risks_for_new_oil_wells.html"},"description":"An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ds-projects/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://cmdang-mochi.github.io/ds-projects/feed.xml" title="Connie M Dang | Project Portfolio" /><link rel="shortcut icon" type="image/x-icon" href="/ds-projects/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -85,7 +87,7 @@ window.onload = wrap_img;
         <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Project Description</h1><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-22T00:00:00-06:00" itemprop="datePublished">
+    <h1 class="post-title p-name" itemprop="name headline">Profit Risks for New Oil Wells</h1><p class="page-description">An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-22T00:00:00-06:00" itemprop="datePublished">
         Nov 22, 2020
       </time>
        • <span class="read-time" title="Estimated read time">
@@ -133,8 +135,19 @@ window.onload = wrap_img;
         
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><h1>Table of Contents<span class="tocSkip"></span></h1></p>
-<div class="toc"><ul class="toc-item"><li><span><a href="#Project-Description" data-toc-modified-id="Project-Description-1">Project Description</a></span><ul class="toc-item"><li><span><a href="#Data-description" data-toc-modified-id="Data-description-1.1">Data description</a></span></li></ul></li><li><span><a href="#Import-Libraries" data-toc-modified-id="Import-Libraries-2">Import Libraries</a></span></li><li><span><a href="#Exploratory-data-analysis" data-toc-modified-id="Exploratory-data-analysis-3">Exploratory data analysis</a></span><ul class="toc-item"><li><span><a href="#Load-data" data-toc-modified-id="Load-data-3.1">Load data</a></span></li><li><span><a href="#Preprocessing-data" data-toc-modified-id="Preprocessing-data-3.2">Preprocessing data</a></span></li></ul></li><li><span><a href="#Split-Data" data-toc-modified-id="Split-Data-4">Split Data</a></span></li><li><span><a href="#Model-building" data-toc-modified-id="Model-building-5">Model building</a></span><ul class="toc-item"><li><span><a href="#geo_0-region" data-toc-modified-id="geo_0-region-5.1">geo_0 region</a></span></li><li><span><a href="#geo_1-region" data-toc-modified-id="geo_1-region-5.2">geo_1 region</a></span></li><li><span><a href="#geo_2-region" data-toc-modified-id="geo_2-region-5.3">geo_2 region</a></span></li><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-5.4">Conclusion</a></span></li></ul></li><li><span><a href="#Profit-calculation" data-toc-modified-id="Profit-calculation-6">Profit calculation</a></span><ul class="toc-item"><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-6.1">Conclusion</a></span></li></ul></li><li><span><a href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions" data-toc-modified-id="Profit-from-a-set-of-selected-oil-wells-and-model-predictions-7">Profit from a set of selected oil wells and model predictions</a></span><ul class="toc-item"><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-7.1">Conclusion</a></span></li></ul></li><li><span><a href="#Calculate-risks-and-profit-for-each-region" data-toc-modified-id="Calculate-risks-and-profit-for-each-region-8">Calculate risks and profit for each region</a></span><ul class="toc-item"><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-8.1">Conclusion</a></span></li></ul></li><li><span><a href="#Overall-Conclusion" data-toc-modified-id="Overall-Conclusion-9">Overall Conclusion</a></span></li></ul></div>
+<h1 id="Project-Description">Project Description<a class="anchor-link" href="#Project-Description"> </a></h1><hr />
+<p>Analyze potential profit and risks for an oil company.</p>
+<p>Create a model that will analyze different proposed locations for a new oil well that will maximize profits while minimizing risk.</p>
+<p>Goal is to find the best place for a new oil well using provided data from three different regions.</p>
+<p>Steps to choose the location:</p>
+<ul>
+<li>Collect the oil well parameters in the selected region: oil quality and volume of reserves;</li>
+<li>Build a model for predicting the volume of reserves in the new wells;</li>
+<li>Pick the oil wells with the highest estimated values;</li>
+<li>Pick the region with the highest total profit for the selected oil wells.</li>
+</ul>
+<p>There is data on oil samples from three regions. Parameters of each oil well in the region are already known. Build a model that will help to pick the region with the highest profit margin. Analyze potential profit and risks using the Bootstrapping technique.</p>
+
 </div>
 </div>
 </div>
