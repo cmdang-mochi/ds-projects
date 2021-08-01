@@ -10,14 +10,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
 <meta property="og:description" content="An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells." />
-<link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
-<meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
+<link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
+<meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" />
 <meta property="og:site_name" content="Connie M Dang Project Portfolio" />
 <meta property="og:image" content="https://cmdang-mochi.github.io/ds-projects/images/oil_well.png" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2020-11-22T00:00:00-06:00" />
 <script type="application/ld+json">
-{"description":"An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.","url":"https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Profit Risks for New Oil Wells","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","image":"https://cmdang-mochi.github.io/ds-projects/images/oil_well.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html"},"@context":"https://schema.org"}</script>
+{"description":"An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells.","url":"https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html","@type":"BlogPosting","headline":"Profit Risks for New Oil Wells","dateModified":"2020-11-22T00:00:00-06:00","datePublished":"2020-11-22T00:00:00-06:00","image":"https://cmdang-mochi.github.io/ds-projects/images/oil_well.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/ds-projects/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://cmdang-mochi.github.io/ds-projects/feed.xml" title="Connie M Dang | Project Portfolio" /><link rel="shortcut icon" type="image/x-icon" href="/ds-projects/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
@@ -101,7 +101,10 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/ds-projects/categories/#jupyter">jupyter</a>
+        <a class="category-tags-link" href="/ds-projects/categories/#Machine Learning">Machine Learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Python">Python</a>
         &nbsp;
       
         <a class="category-tags-link" href="/ds-projects/categories/#pandas. numpy">pandas. numpy</a>
@@ -151,9 +154,8 @@ window.onload = wrap_img;
 </ul>
 </li>
 <li class="toc-entry toc-h1"><a href="#Import-Libraries">Import Libraries </a></li>
-<li class="toc-entry toc-h1"><a href="#Exploratory-data-analysis">Exploratory data analysis </a>
+<li class="toc-entry toc-h1"><a href="#Load-data">Load data </a>
 <ul>
-<li class="toc-entry toc-h2"><a href="#Load-data">Load data </a></li>
 <li class="toc-entry toc-h2"><a href="#Preprocessing-data">Preprocessing data </a></li>
 </ul>
 </li>
@@ -166,21 +168,9 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
 </ul>
 </li>
-<li class="toc-entry toc-h1"><a href="#Profit-calculation">Profit calculation </a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h1"><a href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions">Profit from a set of selected oil wells and model predictions </a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
-</ul>
-</li>
-<li class="toc-entry toc-h1"><a href="#Calculate-risks-and-profit-for-each-region">Calculate risks and profit for each region </a>
-<ul>
-<li class="toc-entry toc-h2"><a href="#Conclusion">Conclusion </a></li>
-</ul>
-</li>
+<li class="toc-entry toc-h1"><a href="#Profit-calculation">Profit calculation </a></li>
+<li class="toc-entry toc-h1"><a href="#Profit-from-a-set-of-selected-oil-wells-and-model-predictions">Profit from a set of selected oil wells and model predictions </a></li>
+<li class="toc-entry toc-h1"><a href="#Calculate-risks-and-profit-for-each-region">Calculate risks and profit for each region </a></li>
 <li class="toc-entry toc-h1"><a href="#Overall-Conclusion">Overall Conclusion </a></li>
 </ul><!--
 #################################################
@@ -223,11 +213,11 @@ window.onload = wrap_img;
 <p>Geological exploration data for the three regions are stored in files:</p>
 <ul>
 <li>
-<em>id</em> — unique oil well identifier</li>
+<code>id</code> — unique oil well identifier</li>
 <li>
-<em>f0, f1, f2</em> — three features of points (their specific meaning is unimportant, but the features themselves are significant)</li>
+<code>f0</code>, <code>f1</code>, <code>f2</code> — three features of points (their specific meaning is unimportant, but the features themselves are significant)</li>
 <li>
-<em>product</em> — volume of reserves in the oil well (thousand barrels).</li>
+<code>product</code> — volume of reserves in the oil well (thousand barrels).</li>
 </ul>
 <p><strong>Conditions:</strong></p>
 <ul>
@@ -280,18 +270,9 @@ window.onload = wrap_img;
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Exploratory-data-analysis">
-<a class="anchor" href="#Exploratory-data-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Exploratory data analysis<a class="anchor-link" href="#Exploratory-data-analysis"> </a>
-</h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Load-data">
+<h1 id="Load-data">
 <a class="anchor" href="#Load-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load data<a class="anchor-link" href="#Load-data"> </a>
-</h2>
+</h1>
 </div>
 </div>
 </div>
@@ -317,11 +298,16 @@ window.onload = wrap_img;
     
     
 <div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
 <div class="input">
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_information</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Functions to get descriptions and info from dataframe</span>
+
+<span class="k">def</span> <span class="nf">get_information</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
   <span class="sd">""" Prints general info about the dataframe to get an idea of what it looks like"""</span>
   <span class="nb">print</span><span class="p">(</span><span class="s1">'Head: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
   <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -376,6 +362,7 @@ window.onload = wrap_img;
 </div>
 </div>
 
+    </details>
 </div>
     
 
@@ -2247,9 +2234,7 @@ Average volume of reserves in each region:
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">
-<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
-</h2>
+<hr>
 <p>The minimum volume of reserves need to develop a new well without losses is 111.11 (thousand barrels).</p>
 <p>Tables showing average volume in each region:</p>
 <table>
@@ -2418,9 +2403,7 @@ Average volume of reserves in each region:
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">
-<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
-</h2>
+<hr>
 <p>From the calculations in this section, it's best to develop new wells in region geo_0. The calculation for predicted profit is highest in this region at 33,208,260.43 USD. geo_1 had the lowest predicted profit at 24,150,866.97 USD and geo_2 came out in the middle at 27,103,499.64 USD.</p>
 
 </div>
@@ -2685,9 +2668,7 @@ Loss probability for geo_2: 0.076 or 7.60%
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion">
-<a class="anchor" href="#Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion<a class="anchor-link" href="#Conclusion"> </a>
-</h2>
+<hr>
 <p>Based on the calculations in this section, the best region get develop new oil wells would be region geo_1. Out of the 1000 samples that was obtained in each region, geo_1 had the smallest probablity of loss at 1.50%. The calculated average profit for region geo_1 out of the 1000 sample slice came in at 4,560,451.06 USD which was the highest average profit out of the three regions. The table below summarizes the findings in this secion:</p>
 <table>
 <thead>
@@ -2837,7 +2818,7 @@ Loss probability for geo_2: 0.076 or 7.60%
         theme="github-light"
         crossorigin="anonymous"
         async>
-</script><a class="u-url" href="/ds-projects/jupyter/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" hidden></a>
+</script><a class="u-url" href="/ds-projects/machine%20learning/python/pandas.%20numpy/scikit-learn/tabulate/scipy/2020/11/22/profit_risks_for_new_oil_wells.html" hidden></a>
 </article>
       </div>
     </main><footer class="site-footer h-card">
