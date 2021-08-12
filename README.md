@@ -7,7 +7,11 @@
 # Connie M Dang's Visual Portfolio
 https://cmdang-mochi.github.io/ds-projects/
 
-Most of the featured projects were completed through [Yandex Practicum "Data Science Professional" training program](https://practicum.yandex.com/data-scientist/). 
+I've accomplished 15+ data science projects during [Practicum by Yandex "Data Science Professional" training program](https://practicum.yandex.com/data-scientist/). Here I feature some of the projects I've completed during the program and some extra outside the program.
+
+* Relevant Coursework: Python, Data Processing, Exploratory/Statistical Data Analysis(EDA/SDA), Data Collection and Storage (SQL), Supervised/Unsupervised Machine Learning, Machine Learning for Business, Linear Algebra, Numerical Methods, Time Series,  Machine Learning for Texts (NLP), Computer Vision (Deep Learning)
+
+* [Credential ID 20212DSE00034](https://code.s3.yandex.net/practicum_certificate/DS/07/Connie_Dang.pdf)
 
 ## Portfolio Contents
 
