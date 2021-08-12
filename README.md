@@ -12,7 +12,7 @@ I've accomplished 15+ data science projects during Practicum by Yandex "Data Sci
 ---
 More information about the course program that I completed:
 
-**Data Science Professional Certificate - [PRACTICUM BY YANDEX](https://practicum.yandex.com/data-scientist/)**
+**Data Science Professional Program - [PRACTICUM BY YANDEX](https://practicum.yandex.com/data-scientist/)**
 
 * Relevant Coursework: *Python, Data Processing, Exploratory/Statistical Data Analysis(EDA/SDA), Data Collection and Storage (SQL), Supervised/Unsupervised Machine Learning, Machine Learning for Business, Linear Algebra, Numerical Methods, Time Series,  Machine Learning for Texts (NLP), Computer Vision (Deep Learning)*
 
