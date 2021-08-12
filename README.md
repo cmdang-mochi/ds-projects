@@ -7,7 +7,7 @@
 # Connie M Dang's Visual Portfolio
 https://cmdang-mochi.github.io/ds-projects/
 
-I've accomplished 15+ data science projects during Practicum by Yandex *Data Science Professional* training program. Here I feature some of the projects I've completed during the program and some extra outside the program.
+I've accomplished over 15 data science projects during Practicum by Yandex's *Data Science Professional* training program. Here in my portfolio, I feature some of the projects I've completed during the program and some extra outside the program.
 
 ---
 More information about the course program that I completed:
