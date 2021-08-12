@@ -18,6 +18,8 @@ More information about the course program that I completed:
 
 * [Credential ID 20212DSE00034](https://code.s3.yandex.net/practicum_certificate/DS/07/Connie_Dang.pdf)
 
+---
+
 ## Portfolio Contents
 
 | Project Name | Description | Tags |
