@@ -6,24 +6,15 @@
 
 https://cmdang-mochi.github.io/ds-projects/
 
-# My Blog
-
+# Connie M Dang's Visual Portfolio
 
 _powered by [fastpages](https://github.com/fastai/fastpages)_
 
+Most of the featured projects were completed through [Yandex Practicum "Data Science Professional" training program](https://practicum.yandex.com/data-scientist/). 
 
-## What To Do Next?
+## Portfolio Contents
 
-Great!  You have setup your repo.  Now its time to start writing content.  Some helpful links:
-
-- [Writing Blogs With Jupyter](https://github.com/fastai/fastpages#writing-blog-posts-with-jupyter)
-
-- [Writing Blogs With Markdown](https://github.com/fastai/fastpages#writing-blog-posts-with-markdown)
-
-- [Writing Blog Posts With Word](https://github.com/fastai/fastpages#writing-blog-posts-with-microsoft-word)
-
-- [(Optional) Preview Your Blog Locally](_fastpages_docs/DEVELOPMENT.md)
-
-Note: you may want to remove example blog posts from the `_posts`,  `_notebooks` or `_word` folders (but leave them empty, don't delete these folders) if you don't want these blog posts to appear on your site.
-
-Please use the [nbdev & blogging channel](https://forums.fast.ai/c/fastai-users/nbdev/48) in the fastai forums for any questions or feature requests.
+| Project Name | Description | Tags |
+| :---         | :---        | :--- |
+| Gold Recovery Optimization | Optimizing the work of a gold-mining company by training a model which can predict the amount of gold extracted from gold ore based on extraction and purification data. | Machine Learning, Python, exploratory analysis, pandas, numpy   mathplotlib, scikit-learn |
+| Profit Risks for New Oil Wells | An oil company is looking for a profitable region for oil production. Help decide where to drill a new well by examining the different regions. Build a model that will help to select the region with the highest profitability by predicting the volume of reserves in new wells. | Machine Learning   Python   pandas   numpy   scikit-learn   tabulate   scipy |
