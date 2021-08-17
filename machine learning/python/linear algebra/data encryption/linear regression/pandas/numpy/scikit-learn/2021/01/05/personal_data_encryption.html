@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Personal Data Encryption | Connie M Dang Project Portfolio</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Personal Data Encryption" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An insurance company needs to protect user data by encryption of personal information. We work to create data encryption algorithm so that after transformation, the accuracy of Machine Learning model will not change as without transformation." />
+<meta property="og:description" content="An insurance company needs to protect user data by encryption of personal information. We work to create data encryption algorithm so that after transformation, the accuracy of Machine Learning model will not change as without transformation." />
+<link rel="canonical" href="https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/linear%20algebra/data%20encryption/linear%20regression/pandas/numpy/scikit-learn/2021/01/05/personal_data_encryption.html" />
+<meta property="og:url" content="https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/linear%20algebra/data%20encryption/linear%20regression/pandas/numpy/scikit-learn/2021/01/05/personal_data_encryption.html" />
+<meta property="og:site_name" content="Connie M Dang Project Portfolio" />
+<meta property="og:image" content="https://cmdang-mochi.github.io/ds-projects/images/encryption.PNG" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-01-05T00:00:00-06:00" />
+<script type="application/ld+json">
+{"description":"An insurance company needs to protect user data by encryption of personal information. We work to create data encryption algorithm so that after transformation, the accuracy of Machine Learning model will not change as without transformation.","url":"https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/linear%20algebra/data%20encryption/linear%20regression/pandas/numpy/scikit-learn/2021/01/05/personal_data_encryption.html","@type":"BlogPosting","headline":"Personal Data Encryption","dateModified":"2021-01-05T00:00:00-06:00","datePublished":"2021-01-05T00:00:00-06:00","image":"https://cmdang-mochi.github.io/ds-projects/images/encryption.PNG","mainEntityOfPage":{"@type":"WebPage","@id":"https://cmdang-mochi.github.io/ds-projects/machine%20learning/python/linear%20algebra/data%20encryption/linear%20regression/pandas/numpy/scikit-learn/2021/01/05/personal_data_encryption.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/ds-projects/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://cmdang-mochi.github.io/ds-projects/feed.xml" title="Connie M Dang | Project Portfolio" /><link rel="shortcut icon" type="image/x-icon" href="/ds-projects/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement( document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "[%", right: "%]", display: true},
+            {left: "$", right: "$", display: false}
+        ]}
+        );
+    });
+    </script>
+
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/ds-projects/">Connie M Dang | Project Portfolio</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/ds-projects/about/">About Me</a><a class="page-link" href="/ds-projects/search/">Search</a><a class="page-link" href="/ds-projects/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Personal Data Encryption</h1><p class="page-description">An insurance company needs to protect user data by encryption of personal information. We work to create data encryption algorithm so that after transformation, the accuracy of Machine Learning model will not change as without transformation.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2021-01-05T00:00:00-06:00" itemprop="datePublished">
+        Jan 5, 2021
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      10 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Machine Learning">Machine Learning</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Python">Python</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Linear Algebra">Linear Algebra</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Data Encryption">Data Encryption</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#Linear Regression">Linear Regression</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#pandas">pandas</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#numpy">numpy</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/ds-projects/categories/#scikit-learn">scikit-learn</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/cmdang-mochi/ds-projects/tree/master/_notebooks/2021-01-05-personal_data_encryption.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/ds-projects/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/cmdang-mochi/ds-projects/master?filepath=_notebooks%2F2021-01-05-personal_data_encryption.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ds-projects/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/cmdang-mochi/ds-projects/blob/master/_notebooks/2021-01-05-personal_data_encryption.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/ds-projects/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Project-Description">Project Description </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Data-description">Data description </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Load-Data">Load Data </a></li>
+<li class="toc-entry toc-h1"><a href="#Multiplication-of-matrices">Multiplication of matrices </a></li>
+<li class="toc-entry toc-h1"><a href="#Transformation-algorithm">Transformation algorithm </a></li>
+<li class="toc-entry toc-h1"><a href="#Algorithm-test">Algorithm test </a></li>
+<li class="toc-entry toc-h1"><a href="#Overall-Conclusion">Overall Conclusion </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2021-01-05-personal_data_encryption.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Project-Description">
+<a class="anchor" href="#Project-Description" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Project Description</strong><a class="anchor-link" href="#Project-Description"> </a>
+</h1>
+<hr>
+<p>The Sure Tomorrow insurance company wants to protect its clients' data. Your task is to develop a data transforming algorithm that would make it hard to recover personal information from the transformed data. This is called <strong>data masking</strong>, or <strong>data obfuscation</strong>. You are also expected to prove that the algorithm works correctly. Additionally, the data should be protected in such a way that the quality of machine learning models doesn't suffer. You don't need to pick the best model. Follow these steps to develop a new algorithm:</p>
+<ul>
+<li>construct a theoretical proof using properties of models and the given task;</li>
+<li>formulate an algorithm for this proof;</li>
+<li>check that the algorithm is working correctly when applied to real data.</li>
+</ul>
+<p>We will use a simple method of data masking, based on an invertible matrix.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Data-description">
+<a class="anchor" href="#Data-description" aria-hidden="true"><span class="octicon octicon-link"></span></a><strong>Data description</strong><a class="anchor-link" href="#Data-description"> </a>
+</h2>
+<p>The dataset is stored in file <code>/datasets/insurance_us.csv</code>.</p>
+<ul>
+<li>
+<p><strong>Features</strong>: insured person's gender, age, salary, and number of family members.</p>
+</li>
+<li>
+<p><strong>Target</strong>: number of insurance benefits received by the insured person over the last five years.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Load-Data">
+<a class="anchor" href="#Load-Data" aria-hidden="true"><span class="octicon octicon-link"></span></a>Load Data<a class="anchor-link" href="#Load-Data"> </a>
+</h1>
+<hr>
+<p>Download and look into the data.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'/datasets/insurance_us.csv'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_information</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="sd">""" Prints general info about the dataframe to get an idea of what it looks like"""</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Head: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span> <span class="c1"># Prints a break to seperate print data</span>
+  
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Info: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Describe: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Columns with nulls: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">get_null_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Shape: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'*'</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Duplicated: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of duplicated rows: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+
+<span class="k">def</span> <span class="nf">get_null_df</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+  <span class="sd">"""Gets percentage of null values per column per dataframe"""</span>
+  <span class="n">df_nulls</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'missing_values'</span><span class="p">])</span>
+  <span class="n">df_nulls</span><span class="p">[</span><span class="s1">'percent_of_nulls'</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df_nulls</span><span class="p">[</span><span class="s1">'missing_values'</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">num</span><span class="p">)</span> <span class="o">*</span><span class="mi">100</span>
+  <span class="k">return</span> <span class="n">df_nulls</span>
+
+<span class="k">def</span> <span class="nf">get_null</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+  <span class="sd">"""Gets percentage of null values in dataframe"""</span>
+  <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+  <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="k">for</span> <span class="n">column</span><span class="p">,</span> <span class="n">percent</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">):</span>
+
+    <span class="n">num_of_nulls</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">num_of_nulls</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Columns </span><span class="si">{}</span><span class="s1"> has {:.</span><span class="si">{}</span><span class="s1">%} percent of Nulls, and </span><span class="si">{}</span><span class="s1"> number of nulls'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">num_of_nulls</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">count</span> <span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'Number of columns with NA: </span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">count</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">No NA columns found'</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_information</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Head: 
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Family members</th>
+      <th>Insurance benefits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1</td>
+      <td>41.0</td>
+      <td>49600.0</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0</td>
+      <td>46.0</td>
+      <td>38000.0</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0</td>
+      <td>29.0</td>
+      <td>21000.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0</td>
+      <td>21.0</td>
+      <td>41700.0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1</td>
+      <td>28.0</td>
+      <td>26100.0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**************************************************************************************************** 
+
+Info: 
+
+&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 5 columns):
+Gender                5000 non-null int64
+Age                   5000 non-null float64
+Salary                5000 non-null float64
+Family members        5000 non-null int64
+Insurance benefits    5000 non-null int64
+dtypes: float64(2), int64(3)
+memory usage: 195.4 KB
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>None</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**************************************************************************************************** 
+
+Describe: 
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Gender</th>
+      <th>Age</th>
+      <th>Salary</th>
+      <th>Family members</th>
+      <th>Insurance benefits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>count</td>
+      <td>5000.000000</td>
+      <td>5000.000000</td>
+      <td>5000.000000</td>
+      <td>5000.000000</td>
+      <td>5000.000000</td>
+    </tr>
+    <tr>
+      <td>mean</td>
+      <td>0.499000</td>
+      <td>30.952800</td>
+      <td>39916.360000</td>
+      <td>1.194200</td>
+      <td>0.148000</td>
+    </tr>
+    <tr>
+      <td>std</td>
+      <td>0.500049</td>
+      <td>8.440807</td>
+      <td>9900.083569</td>
+      <td>1.091387</td>
+      <td>0.463183</td>
+    </tr>
+    <tr>
+      <td>min</td>
+      <td>0.000000</td>
+      <td>18.000000</td>
+      <td>5300.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>25%</td>
+      <td>0.000000</td>
+      <td>24.000000</td>
+      <td>33300.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>50%</td>
+      <td>0.000000</td>
+      <td>30.000000</td>
+      <td>40200.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>75%</td>
+      <td>1.000000</td>
+      <td>37.000000</td>
+      <td>46600.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>1.000000</td>
+      <td>65.000000</td>
+      <td>79000.000000</td>
+      <td>6.000000</td>
+      <td>5.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**************************************************************************************************** 
+
+Columns with nulls: 
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>missing_values</th>
+      <th>percent_of_nulls</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gender</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Salary</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Family members</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <td>Insurance benefits</td>
+      <td>0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**************************************************************************************************** 
+
+Shape: 
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea ">
+<pre>(5000, 5)</pre>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>**************************************************************************************************** 
+
+Duplicated: 
+
+Number of duplicated rows: 153
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">columns</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">' '</span><span class="p">,</span> <span class="s1">'_'</span><span class="p">)</span> <span class="k">for</span> <span class="n">columns</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index(['gender', 'age', 'salary', 'family_members', 'insurance_benefits'], dtype='object')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'insurance_benefits'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'insurance_benefits'</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset has 5000 entries with no null entries/missing information. There are 5 columns (gender, age, salary, family_members, and insurance_benefits). There seems to be 153 rows of duplicated data. This may be due to simlar clients information, without a unique identifying column it is hard to determine the duplicates apart. Dataset would be broken up into the following:</p>
+<ul>
+<li>
+<p><strong>Features</strong>: insured person's gender, age, salary, and number of family members.</p>
+</li>
+<li>
+<p><strong>Target</strong>: number of insurance benefits received by the insured person over the last five years.</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Multiplication-of-matrices">
+<a class="anchor" href="#Multiplication-of-matrices" aria-hidden="true"><span class="octicon octicon-link"></span></a>Multiplication of matrices<a class="anchor-link" href="#Multiplication-of-matrices"> </a>
+</h1>
+<hr>
+<p>A theoretical proof based on the equation of linear regression is presented here. We will take the features multiply it by an invertible matrix.</p>
+<p>The quality of the model will be the same for both sets of parameters: the original features and the features after multiplication.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Matrix properties:</strong></p>
+<p>An identity matrix (unit matrix)  is a square matrix with 1s on main diagional and 0s everywhere else. Example would be:
+
+$$ E = \begin{bmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix} $$
+</p>
+<p>If any matrix $A$ is multiplied by an identity matrix (or vice versa), the same matrix $A$ is obtained.</p>
+<p>
+$$ AE = EA = A $$
+</p>
+<p>If matrix $A$ is a square matrix and multiplied by it's inverse matrix ($A^{-1}$) the product is equal to the identity matrix.</p>
+<p>
+$$ AA^{-1} = A^{-1}A = E $$
+</p>
+<p>This would make it true that the identity matrix is the inverse of itself:
+
+$$ E = E^{-1} $$
+</p>
+<p>Matrices that have obtainable inverses are called <strong>invertible</strong> matrix. Not all matrices have inverses.</p>
+<p><strong>Invertible matrix properties:</strong></p>
+<ol>
+<li>$ (A^{-1})^{-1} = A $</li>
+<li>
+<p>$ (A^T)^{-1} = (A^{-1})^T $</p>
+<blockquote>
+<p>The transpose of an invertible matrix is also invertible, and its inverse is the transpose of the inverse of the original matrix.</p>
+</blockquote>
+</li>
+<li>
+<p>$ (kA)^{-1} = k^{-1}A^{-1} $ for non-zero scalar $k$</p>
+</li>
+<li>For any <strong>two square matrices</strong> A and B, $ (AB)^{-1} = B^{-1}A^{-1}$</li>
+</ol>
+<p>This would be true with transpose properties of $A$ and $B$ matrices:$ (AB)^T = B^T A^T $</p>
+<blockquote>
+<p>Note that the order of the factors reverses. From this one can deduce that a square matrix $A$ is invertible if and only if $A^T$ is invertible, and in this case we have $(A^{−1})^T = (A^T)^{−1}$. By induction, this result extends to the general case of multiple matrices.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Denote:</p>
+<ul>
+<li>
+<p>$X$ — feature matrix (zero column consists of unities)</p>
+</li>
+<li>
+<p>$y$ — target vector</p>
+</li>
+<li>
+<p>$P$ — matrix by which the features are multiplied</p>
+</li>
+<li>
+<p>$w$ — linear regression weight vector (zero element is equal to the shift)</p>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Predictions:</p>
+$$
+a = Xw
+$$<p>Training objective:</p>
+$$
+\min_w d_2(Xw, y)
+$$<p>Training formula:</p>
+$$
+w = (X^T X)^{-1} X^T y
+$$
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Answer</strong>:</p>
+<p>
+$$ a' = a $$
+</p>
+<p>Predictions ($a'$) made using the features matrix that is multiplied by an invertible matrix is the same as the predictions ($a$) made using the original features matrix.</p>
+<p><strong>Justification:</strong></p>
+<p>Known:</p>
+<ul>
+<li>$ a = Xw $</li>
+<li>$ w = (X^T X)^{-1} X^T y $</li>
+<li>$ a' = X'w' $</li>
+<li>$ X' = XP $</li>
+</ul>
+<p>We want to prove that:</p>
+<ul>
+<li>$ a' = X'w' = XP w' = Xw = a $</li>
+</ul>
+<p>To find $w'$ we can substitute $X$ with $X'$ which known into the linear regression weight vector function $w$.</p>
+<p>
+$$ w' = ((XP)^T (XP))^{-1} (XP)^T y $$
+</p>
+<p>
+$$ w' = ((P^T X^T) (XP))^{-1} P^T X^T y $$
+</p>
+<p>
+$$ w' = (XP)^{-1} (P^T X^T)^{-1} P^T X^T y $$
+</p>
+<p>
+$$ w' = (XP)^{-1} (X^T)^{-1} (P^T)^{-1} P^T X^T y $$
+</p>
+<p>Since $P$ is a square (<em>n x n</em>) and an invertible matrix, $(P^T)^{-1} P^T$ would cancel each other out (this is only possible since $P$ is an invertible matrix).</p>
+<p>
+$$ w' = (XP)^{-1} (X^T)^{-1} X^T y $$
+</p>
+<p>
+$$ w' = (X^TX P)^{-1} X^T y $$
+</p>
+<p>Note that $P$ and $X^TX$ are the only square matrices:</p>
+<p>
+$$ w' = P^{-1} (X^TX)^{-1} X^T y $$
+</p>
+<p>The $X$ portion of the equation now looks exactly the same to weight vector equation so a substitutiion is possible to get:</p>
+<p>
+$$ w' =  P^{-1} w $$
+</p>
+<p>Now, that $w'$ is solved it can be put into the prediction equation from earlier:</p>
+<p>
+$$ a' = X'w' $$
+
+$$ a' = XP w' $$ 
+
+$$ a' = XP (P^{-1} w) $$
+
+
+$$ a' = XP P^{-1} w $$
+</p>
+<p>Since $P$ is an invertible matrix, like earlier $P$ cancels out with its inverse.</p>
+<p>
+$$ a' = X w  = a $$
+</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The weight vectors from MSE minimums for these models are the similar according the proof we did earlier for linear regression. For the predictions with features multiplied by an invertible matrix, we have the weight vector being multiplied by factor of $P^{-1}$ which is the inverse matrix of the matrix used to multiply by features. This cancels out since we multiply the features with matrix with its inverse in the weight vector equation. So for the new weight vector equation after the transformation, it has a factor of $P^{-1}$. With this the quality of the model would not change since both predictions are the same according to the proof!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Transformation-algorithm">
+<a class="anchor" href="#Transformation-algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Transformation algorithm<a class="anchor-link" href="#Transformation-algorithm"> </a>
+</h1>
+<hr>
+<p>State an algorithm for data transformation to solve the task. Explain why the linear regression quality won't change based on the proof above.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Algorithm</strong></p>
+<p>
+$$ X' = XP $$
+
+
+$$ w = (X^T X)^{-1} X^T y $$
+
+
+$$ w' =  P^{-1} w $$
+</p>
+<ul>
+<li>$X'$ — new transformed matrix (zero column consists of unities)</li>
+<li>$X$ — feature matrix (zero column consists of unities)</li>
+<li>$P$ — invertable matrix by which the features are multiplied</li>
+<li>$y$ — target vector</li>
+<li>$w$ — linear regression weight vector (zero element is equal to the shift)</li>
+<li>$w'$ — transformed linear regression weight vector (zero element is equal to the shift)</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Justification</strong></p>
+<p>A new matrix ($X'$) is created by a transformation of original features matrix ($X$) by multiplying with an invertible matrix ($P$).</p>
+<p>The linear regression quality will not change as the since earlier in the proof it's shown that predictions made with original features versus the predictions with transformed matrix are the same.
+...</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<div class="alert alert-success">
+    Yep! The algorithm and it's justification are correct, provided you fix the problems with the proof in the prior section.
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Algorithm-test">
+<a class="anchor" href="#Algorithm-test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithm test<a class="anchor-link" href="#Algorithm-test"> </a>
+</h1>
+<hr>
+<p>The algorithm is programed using matrix operations. Make sure that the quality of linear regression from sklearn is the same before and after transformation. Use the R2 metric.</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">RANDOM_STATE</span> <span class="o">=</span> <span class="mi">12345</span> <span class="c1"># Random_State</span>
+
+<span class="c1"># Splits dataset to test/train (validate/train) datasets</span>
+
+<span class="k">def</span> <span class="nf">get_train_valid</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">df_train</span><span class="p">,</span> <span class="n">df_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_STATE</span><span class="p">)</span> <span class="c1"># Splits data up to 75% train and 25% test</span>
+    <span class="k">return</span> <span class="n">df_train</span><span class="p">,</span> <span class="n">df_valid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">features_train</span><span class="p">,</span> <span class="n">features_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">target_train</span><span class="p">,</span> <span class="n">target_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">features_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">features_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Datasets: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Features Train:'</span><span class="p">,</span> <span class="n">features_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Train:'</span><span class="p">,</span> <span class="n">target_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Features Validation:'</span><span class="p">,</span> <span class="n">features_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Validation:'</span><span class="p">,</span> <span class="n">target_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Datasets: 
+
+Features Train: (3750, 4)  Target Train: (3750,)
+Features Validation: (1250, 4)  Target Validation: (1250,)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<span class="n">predictions_original</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features_valid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'R2 Score with original features:'</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">target_valid</span><span class="p">,</span> <span class="n">predictions_original</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>R2 Score with original features: 0.435227571270266
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">create_matrix_P</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+  <span class="n">matrix_P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="c1"># Create matrix_P with shape of n_features x n_features</span>
+  <span class="k">return</span> <span class="n">matrix_P</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">matrix_P</span> <span class="o">=</span> <span class="n">create_matrix_P</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">matrix_P</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="k">except</span> <span class="n">LinAlgError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Matrix is not invertible"</span><span class="p">)</span>
+
+<span class="n">matrix_P</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(4, 4)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#sq_feat = features.dot(features.T) -&gt; Commenting out as this is not needed</span>
+
+<span class="n">feat_P</span><span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">matrix_P</span><span class="p">)</span>
+
+<span class="n">feat_P_train</span><span class="p">,</span> <span class="n">feat_P_valid</span> <span class="o">=</span> <span class="n">get_train_valid</span><span class="p">(</span><span class="n">feat_P</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">feat_P_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">feat_P_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Datasets: </span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Transformed Features Train:'</span><span class="p">,</span> <span class="n">feat_P_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Train:'</span><span class="p">,</span> <span class="n">target_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Transformed Features Validation:'</span><span class="p">,</span> <span class="n">feat_P_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="s1">' Target Validation:'</span><span class="p">,</span> <span class="n">target_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Datasets: 
+
+Transformed Features Train: (3750, 4)  Target Train: (3750,)
+Transformed Features Validation: (1250, 4)  Target Validation: (1250,)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feat_P_train</span><span class="p">,</span> <span class="n">target_train</span><span class="p">)</span>
+<span class="n">predictions_trans</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">feat_P_valid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'R2 Score with features multiplied by an invertible matrix:'</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">target_valid</span><span class="p">,</span> <span class="n">predictions_trans</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>R2 Score with features multiplied by an invertible matrix: 0.43522757127045497
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset was split into test/train (validate/train), the model was trained using the training datasets and then evaluated using the test set. With the creation of the invertible matrix P, the features matrix was transformed by multiplying it with matrix P. The R2 score for both linear regression models with the original features vs the transformed features are very similar.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Overall-Conclusion">
+<a class="anchor" href="#Overall-Conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overall Conclusion<a class="anchor-link" href="#Overall-Conclusion"> </a>
+</h1>
+<p>With the transformation matrix, it was determined that having the orignal features multipled an invertible matrix gave us the same predictions in the linear regression model. The proof from above proves that it's same. The weight vector for the transformation features shows that it takes in the factor of $P^{-1}$. It's shown that the R2 score for the both models are very similar.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="cmdang-mochi/ds-projects"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/ds-projects/machine%20learning/python/linear%20algebra/data%20encryption/linear%20regression/pandas/numpy/scikit-learn/2021/01/05/personal_data_encryption.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/ds-projects/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/ds-projects/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/ds-projects/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p></p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/cmdang-mochi" title="cmdang-mochi"><svg class="svg-icon grey"><use xlink:href="/ds-projects/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/connie-m-dang" title="connie-m-dang"><svg class="svg-icon grey"><use xlink:href="/ds-projects/assets/minima-social-icons.svg#linkedin"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
